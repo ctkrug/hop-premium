@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  color: #17312d;
+  background: #e9f1e8;
+  font-family: 'DM Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+
+.launch {
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+  padding: 32px;
+  background: radial-gradient(circle at top right, #f4c95d 0, transparent 30%), #e9f1e8;
+}
+
+h1 { font: 700 clamp(2.5rem, 8vw, 6rem) / 0.95 'Space Grotesk', sans-serif; margin: 0; }
+p { max-width: 38rem; line-height: 1.6; }
+.eyebrow { color: #bc4b28; font-weight: 500; text-transform: uppercase; }
