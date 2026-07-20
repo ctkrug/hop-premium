@@ -10,6 +10,10 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: { sourceType: 'module' },
+      globals: {
+        document: 'readonly',
+        HTMLElement: 'readonly',
+      },
     },
     plugins: { '@typescript-eslint': tseslint },
     rules: {
