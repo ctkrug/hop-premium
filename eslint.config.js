@@ -13,6 +13,13 @@ export default [
       globals: {
         document: 'readonly',
         HTMLElement: 'readonly',
+        HTMLInputElement: 'readonly',
+        HTMLOutputElement: 'readonly',
+        SVGSVGElement: 'readonly',
+        SVGGElement: 'readonly',
+        SVGPathElement: 'readonly',
+        SVGTextElement: 'readonly',
+        window: 'readonly',
       },
     },
     plugins: { '@typescript-eslint': tseslint },
