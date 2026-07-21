@@ -2,7 +2,7 @@
 
 ## Epic 1 — Make the fork visible
 
-### [ ] 1. Build the live stay-versus-switch fork chart
+### [x] 1. Build the live stay-versus-switch fork chart
 
 - Dragging the stay-raise slider from 8% to 3% redraws both D3 paths during the
   drag without a submit action.
@@ -10,21 +10,21 @@
   dollar-labelled cumulative gap for the configured horizon.
 - At default inputs, the chart renders annual values for every year in the horizon.
 
-### [ ] 2. Create a tested compensation-compounding model
+### [x] 2. Create a tested compensation-compounding model
 
 - Given starting pay, raise rate, switch bump, and horizon, the model returns one
   deterministic annual salary value per path per year.
 - Unit tests verify 0% raise, 0% switch bump, and a positive compounding case.
 - Cumulative earnings equal the sum of the annual salary values returned.
 
-### [ ] 3. Add accessible continuous slider controls
+### [x] 3. Add accessible continuous slider controls
 
 - Both sliders expose a visible label, current percentage, and keyboard-adjustable
   range input with a 44px minimum touch target.
 - Pointer, touch, and keyboard changes update the model and chart within one frame.
 - Focus-visible, hover, active, and disabled states match `docs/DESIGN.md`.
 
-### [ ] 4. Polish the chart-first hero composition
+### [x] 4. Polish the chart-first hero composition
 
 - At 1440×900, the chart occupies at least 60% of the initial viewport and controls
   do not overlap it.
@@ -35,14 +35,14 @@
 
 ## Epic 2 — Make the model legible
 
-### [ ] 5. Surface annual and cumulative earnings readouts
+### [x] 5. Surface annual and cumulative earnings readouts
 
 - The interface shows modeled annual salary at the selected endpoint for both paths.
 - The cumulative dollar difference updates whenever either input changes.
 - Currency values are formatted consistently with grouping separators and no
   misleading fractional cents.
 
-### [ ] 6. Add an explicit assumptions panel
+### [x] 6. Add an explicit assumptions panel
 
 - The page states the starting salary, horizon, raise cadence, and switch timing
   used by the model.
@@ -50,7 +50,7 @@
   job-search risk.
 - The panel remains reachable by keyboard and readable on a 390px viewport.
 
-### [ ] 7. Clarify the divergence directly on the chart
+### [x] 7. Clarify the divergence directly on the chart
 
 - Each path has an adjacent, non-overlapping endpoint label at standard desktop
   width.
@@ -59,7 +59,7 @@
 - Chart axes and key labels maintain at least 4.5:1 text contrast against their
   surfaces.
 
-### [ ] 8. Polish explanatory states and number motion
+### [x] 8. Polish explanatory states and number motion
 
 - Changing an input pulses the gap figure once and interpolates paths over the
   design-specified motion duration.
@@ -69,19 +69,19 @@
 
 ## Epic 3 — Make it ready to share
 
-### [ ] 9. Add a custom Hop Premium identity
+### [x] 9. Add a custom Hop Premium identity
 
 - The page includes a non-default favicon rendered from the project fork glyph.
 - The visible wordmark uses the selected display type and fork signature detail.
 - Brand styling is consistent between the masthead, controls, and chart annotations.
 
-### [ ] 10. Make the static build portable
+### [x] 10. Make the static build portable
 
 - `npm run build` produces an `dist/` directory containing an `index.html` entry.
 - Generated HTML and asset references work when served below a non-root path.
 - The deployed app makes no network request for application data.
 
-### [ ] 11. Cover interactive behavior with automated checks
+### [x] 11. Cover interactive behavior with automated checks
 
 - Tests verify slider input changes the model data used for rendering.
 - Tests verify the displayed gap is positive when switch bump exceeds stay growth
