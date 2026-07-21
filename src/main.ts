@@ -136,7 +136,12 @@ function update() {
   renderChart(projection)
   liveUpdate!.textContent = `Over ${inputs.horizonYears} years, the cumulative earnings gap is ${formatCurrency(Math.abs(projection.cumulativeGap))} ${gapCopy!.textContent}.`
   window.clearTimeout(settledTimer)
-  settledTimer = window.setTimeout(() => document.querySelector('.wordmark')?.classList.add('forking'), 160)
+  settledTimer = window.setTimeout(() => {
+    const wordmark = document.querySelector('.wordmark')
+    wordmark?.classList.remove('forking')
+    void wordmark?.getBoundingClientRect()
+    wordmark?.classList.add('forking')
+  }, 160)
 }
 
 stayInput.addEventListener('input', update)
