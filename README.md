@@ -1,5 +1,20 @@
 # Hop Premium
 
+An interactive, client-only view of how a job-switch compensation bump compounds
+against an annual raise. Drag the two sliders to redraw the annual salary paths
+and their cumulative earnings difference in real time.
+
+## Run it
+
+```sh
+npm install
+npm run dev
+```
+
+Use `npm test`, `npm run lint`, and `npm run build` to verify the project. The
+production build is emitted to `dist/` with relative asset links for subpath
+hosting.
+
 Hop Premium is a live earnings-compounding explainer for the career decision many
 people make on instinct: stay put or switch jobs. Drag the annual raise you expect
 if you stay and the typical compensation bump from changing jobs. The chart responds
