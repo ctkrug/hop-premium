@@ -1,7 +1,8 @@
 import * as d3 from 'd3'
 import { chartCeiling, toChartPoints } from './lib/chart-data'
 import { formatCurrency, formatPercent } from './lib/format'
-import { projectEarnings, validateInputs, type CompensationInputs } from './lib/model'
+import { projectEarnings, type CompensationInputs } from './lib/model'
+import { scenarioForSliders } from './lib/scenario'
 import './styles.css'
 
 const app = document.querySelector<HTMLElement>('#app')
@@ -119,12 +120,12 @@ function renderChart(projection: ReturnType<typeof projectEarnings>) {
 }
 
 function update() {
+  const scenario = scenarioForSliders(defaults, stayInput!.value, switchInput!.value)
+  errorMessage!.hidden = !scenario.error
+  errorMessage!.textContent = scenario.error ?? ''
+  if (!scenario.projection) return
   inputs = { ...defaults, stayRaisePercent: Number(stayInput!.value), switchBumpPercent: Number(switchInput!.value) }
-  const error = validateInputs(inputs)
-  errorMessage!.hidden = !error
-  errorMessage!.textContent = error ?? ''
-  if (error) return
-  const projection = projectEarnings(inputs)
+  const projection = scenario.projection
   stayValue!.value = `${formatPercent(inputs.stayRaisePercent)}%`
   switchValue!.value = `${formatPercent(inputs.switchBumpPercent)}%`
   gapValue!.textContent = formatCurrency(Math.abs(projection.cumulativeGap))
