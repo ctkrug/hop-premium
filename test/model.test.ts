@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { projectEarnings } from '../src/lib/model'
+import { projectEarnings, validateInputs } from '../src/lib/model'
 
 describe('projectEarnings', () => {
   it('returns one annual salary for each year including today', () => {
@@ -56,5 +56,21 @@ describe('projectEarnings', () => {
     expect(result.switchCumulative).toBeCloseTo(
       result.years.reduce((sum, year) => sum + year.switchSalary, 0),
     )
+  })
+})
+
+describe('validateInputs', () => {
+  const valid = { startingSalary: 100_000, stayRaisePercent: 3, switchBumpPercent: 15, horizonYears: 10 }
+
+  it('accepts zero rates and configured maximum rates', () => {
+    expect(validateInputs({ ...valid, stayRaisePercent: 0, switchBumpPercent: 0 })).toBeNull()
+    expect(validateInputs({ ...valid, stayRaisePercent: 20, switchBumpPercent: 50, horizonYears: 40 })).toBeNull()
+  })
+
+  it('rejects malformed, negative, and out-of-range values', () => {
+    expect(validateInputs({ ...valid, startingSalary: 0 })).toMatch(/positive/)
+    expect(validateInputs({ ...valid, stayRaisePercent: Number.NaN })).toMatch(/between/)
+    expect(validateInputs({ ...valid, switchBumpPercent: 51 })).toMatch(/between/)
+    expect(validateInputs({ ...valid, horizonYears: 1.5 })).toMatch(/whole number/)
   })
 })
